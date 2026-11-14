@@ -12,6 +12,11 @@
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <style>
+/* 인스타그램 */
+.sns{display:inline-flex;align-items:center;gap:10px;margin-top:18px;padding:6px 14px 6px 6px;border-radius:999px;background:#141416;box-shadow:inset 0 0 0 1px rgba(255,255,255,.09);color:#c8c8ce;font-size:14px;font-weight:600;text-decoration:none;transition:background .2s,color .2s}
+.sns svg{width:28px;height:28px;padding:5px;border-radius:50%;background:rgba(255,255,255,.07);color:#fff;box-sizing:border-box}
+@media (hover:hover){.sns:hover{background:#1c1c1f;color:#fff}}
+.sns+.sns{margin-left:8px}
 /* 안드로이드 출시 전 스위치: <html class="pre-android"> 를 지우면 안드로이드 내용이 모두 나타남 */
 .pre-android .android-only{display:none!important}
 html:not(.pre-android) .pre-only{display:none!important}
@@ -1336,9 +1341,10 @@ figcaption{color:var(--muted)}
       <div>
         <div class="rs-brand"><img src="home/icon-96.png" alt="" width="30" height="30">RoadSentry</div>
         <p class="rs-note">알림은 참고용이에요. 실제 도로 표지와 제한속도를 먼저 확인해 주세요. 예상 통행료는 참고용이며 실제 요금과 다를 수 있어요.<br>Tesla는 Tesla, Inc.의 상표이며, 로드센트리는 Tesla와 제휴한 공식 앱이 아니에요. App Store·iPhone·Apple Watch·Siri·단축어는 Apple Inc.의, Android·Google Play는 Google LLC의 상표예요.</p>
+        <a class="sns" href="https://www.instagram.com/roadsentry/" target="_blank" rel="noopener" aria-label="로드센트리 인스타그램 (새 창)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".9" fill="currentColor" stroke="none"/></svg><span>@roadsentry</span></a><a class="sns" href="https://www.youtube.com/@RoadSentry" target="_blank" rel="noopener" aria-label="로드센트리 유튜브 (새 창)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="M10.2 9.4v5.2l4.6-2.6z" fill="currentColor" stroke="none"/></svg><span>RoadSentry</span></a>
       </div>
       <div class="rs-cols">
-        <div><h4>도움</h4><ul><li><a href="./">홈</a></li><li><a href="#faq">자주 묻는 질문</a></li><li><a href="https://jhlee33214.github.io/roadsentry-data/support.html">지원</a></li><li><a href="mailto:ljh0327v@naver.com">이메일 문의</a></li></ul></div>
+        <div><h4>도움</h4><ul><li><a href="./">홈</a></li><li><a href="#faq">자주 묻는 질문</a></li><li><a href="https://jhlee33214.github.io/roadsentry-data/support.html">지원</a></li><li><a href="mailto:ljh0327v@naver.com">이메일 문의</a></li><li><a href="https://www.instagram.com/roadsentry/" target="_blank" rel="noopener">인스타그램</a></li><li><a href="https://www.youtube.com/@RoadSentry" target="_blank" rel="noopener">유튜브</a></li></ul></div>
         <div><h4>약관</h4><ul><li><a href="https://jhlee33214.github.io/roadsentry-data/privacy.html">개인정보 처리방침</a></li><li><a href="https://jhlee33214.github.io/roadsentry-data/terms.html">위치서비스 이용약관</a></li></ul></div>
       </div>
     </div>
