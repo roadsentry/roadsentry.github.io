@@ -343,6 +343,12 @@ p,.ans,small,figcaption{text-wrap:pretty}
 .rail .frame{position:relative}
 .rail .frame::after{content:"";position:absolute;inset:auto 7px 7px;height:28%;border-radius:0 0 31px 31px;background:linear-gradient(transparent,rgba(0,0,0,.55));pointer-events:none}
 @media (max-width:720px){.rail{-webkit-mask-image:none;mask-image:none}.step .pic{padding:8px 0}}
+/* 실제 화면 레일(PC): 제목·화살표와 같은 폭 안에 정확히 4장(좁으면 3장), 좌우 여백 대칭 */
+@media (min-width:721px){
+  .rail{--n:4;width:calc(min(100%,var(--wrap)) - 2*var(--gut) + 2px);margin-left:auto;margin-right:auto;padding:6px 1px 26px;scroll-padding-inline:1px;-webkit-mask-image:none;mask-image:none}
+  .rail figure{width:calc((100% - (var(--n) - 1)*18px)/var(--n));scroll-snap-align:start}
+}
+@media (min-width:721px) and (max-width:1000px){.rail{--n:3}}
 
 @media (prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important}
@@ -817,7 +823,7 @@ p,.ans,small,figcaption{text-wrap:pretty}
   // 실제 화면 줄 버튼
   var rail=document.getElementById('rail'),btns=document.querySelectorAll('.rail-nav button');
   function upd(){if(!rail)return;btns[0].disabled=rail.scrollLeft<8;btns[1].disabled=rail.scrollLeft+rail.clientWidth>rail.scrollWidth-8}
-  btns.forEach(function(b){b.addEventListener('click',function(){var f=rail.querySelector('figure');rail.scrollBy({left:(+b.dataset.dir)*(f.offsetWidth+18)*2})})});
+  btns.forEach(function(b){b.addEventListener('click',function(){var f=rail.querySelector('figure');var st=f.offsetWidth+18;rail.scrollBy({left:(+b.dataset.dir)*st*Math.max(1,Math.round((rail.clientWidth+18)/st))})})});
   if(rail){rail.addEventListener('scroll',upd,{passive:true});window.addEventListener('resize',upd);upd()}
   var els=document.querySelectorAll('.rv');
   if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return}
