@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://roadsentry.github.io/sitemap.xml
+Sitemap: https://roadsentryapp.com/sitemap.xml
