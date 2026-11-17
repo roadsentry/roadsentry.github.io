@@ -1,0 +1,944 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>RoadSentry 사용 설명서 (안드로이드)</title>
+<meta name="description" content="안드로이드 휴대폰용 로드센트리 사용 설명서예요. 설치와 권한, 차에 타면 저절로 시작, 테슬라 차량 등록, 목적지 보내기, 충전·통행료·기록까지 실제 화면으로 따라 해요.">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#000000">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://roadsentryapp.com/android.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="로드센트리 RoadSentry">
+<meta property="og:title" content="로드센트리 사용 설명서 (안드로이드) | 테슬라 단속카메라 안내 앱">
+<meta property="og:description" content="안드로이드 휴대폰에서 설치부터 테슬라 등록, 자동 시작, 목적지 보내기, 충전·통행료·기록까지 따라 하는 설명서예요.">
+<meta property="og:url" content="https://roadsentryapp.com/android.html">
+<meta property="og:image" content="https://roadsentryapp.com/home/og-2.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="안개 낀 밤길을 달리는 차와 문구 손대지 않아도, 알아서">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" sizes="96x96" href="home/icon-96.png">
+<link rel="apple-touch-icon" href="home/apple-touch-icon.png">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+/* 인스타그램 */
+.sns{display:inline-flex;align-items:center;gap:10px;margin-top:18px;padding:6px 14px 6px 6px;border-radius:999px;background:#141416;box-shadow:inset 0 0 0 1px rgba(255,255,255,.09);color:#c8c8ce;font-size:14px;font-weight:600;text-decoration:none;transition:background .2s,color .2s}
+.sns svg{width:28px;height:28px;padding:5px;border-radius:50%;background:rgba(255,255,255,.07);color:#fff;box-sizing:border-box}
+@media (hover:hover){.sns:hover{background:#1c1c1f;color:#fff}}
+.sns+.sns{margin-left:8px}
+/* 안드로이드 출시 전 스위치: <html class="pre-android"> 를 지우면 안드로이드 내용이 모두 나타남 */
+.pre-android .android-only{display:none!important}
+html:not(.pre-android) .pre-only{display:none!important}
+:root{
+  --bg:#F3F4F6; --surface:#FFFFFF; --ink:#111317; --muted:#59606B; --line:#E1E4E9;
+  --hero:#0B0D10; --hero-ink:#F2F3F5; --cream:#E9E0D0; --cream-ink:#1B1A17;
+  --mark:#E5302A; --mark-ink:#FFFFFF; --ok:#12804A; --ok-bg:#E8F5EE; --warn:#9A4A06; --warn-bg:#FFF3E3;
+  --info:#1D4E9E; --info-bg:#EAF1FC; --chip:#ECEEF1; --shadow:0 1px 2px rgba(16,18,23,.06),0 8px 24px rgba(16,18,23,.06);
+  --font:"Pretendard","Pretendard Variable",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0B0D10; --surface:#15181D; --ink:#F1F2F4; --muted:#A0A7B2; --line:#262B33;
+  --hero:#050608; --cream:#EDE3D2; --mark:#FF4B42; --ok:#4ACB86; --ok-bg:#10261B; --warn:#F3A55A; --warn-bg:#2A1D10;
+  --info:#8DB5F5; --info-bg:#132036; --chip:#1E2229; --shadow:none;
+}}
+:root[data-theme="dark"]{
+  --bg:#0B0D10; --surface:#15181D; --ink:#F1F2F4; --muted:#A0A7B2; --line:#262B33;
+  --hero:#050608; --cream:#EDE3D2; --mark:#FF4B42; --ok:#4ACB86; --ok-bg:#10261B; --warn:#F3A55A; --warn-bg:#2A1D10;
+  --info:#8DB5F5; --info-bg:#132036; --chip:#1E2229; --shadow:none;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:72px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font-size:17px;line-height:1.65;word-break:keep-all;overflow-wrap:anywhere;-webkit-font-smoothing:antialiased}
+img{max-width:100%;height:auto}
+a{color:var(--info);text-underline-offset:3px}
+b,strong{font-weight:700}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px}
+
+/* ── 머리 */
+.hero{background:var(--hero);color:var(--hero-ink);padding:28px 0 30px}
+.brand{font-size:13px;letter-spacing:.34em;font-weight:600;color:#C9CDD3;margin:0 0 18px}
+.brand i{display:inline-block;width:7px;height:7px;border:1.5px solid #C9CDD3;border-radius:50%;margin-left:.2em;vertical-align:2px}
+.hero h1{font-size:32px;line-height:1.25;margin:0 0 10px;letter-spacing:-.02em}
+.hero p.lead{margin:0 0 18px;color:#C2C7CF;font-size:17px}
+.facts{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
+.facts li{border:1px solid #2C3139;border-radius:999px;padding:6px 12px;font-size:15px;color:#E4E6EA}
+.road{height:1px;margin-top:22px;background:#2C3139}
+.ver{font-size:14px;color:#8E959F;margin-top:12px}
+
+/* ── 목차 (위에 붙음) */
+.toc{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 97%,transparent);border-bottom:1px solid var(--line)}
+.toc ol{display:flex;gap:8px;margin:0 auto;padding:10px 16px;list-style:none;overflow-x:auto;scroll-snap-type:x proximity;max-width:760px;scrollbar-width:none}
+.toc ol::-webkit-scrollbar{display:none}
+.toc a{display:flex;align-items:center;gap:6px;min-height:44px;padding:0 14px;border-radius:999px;background:var(--chip);color:var(--ink);text-decoration:none;font-size:15px;font-weight:600;white-space:nowrap;scroll-snap-align:start}
+.toc a span{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--ink);color:var(--bg);font-size:12px}
+.toc a[aria-current="true"]{background:var(--ink);color:var(--bg)}
+.toc a[aria-current="true"] span{background:var(--bg);color:var(--ink)}
+
+/* ── 본문 */
+main{padding-bottom:40px}
+section{padding-top:36px}
+h2{font-size:26px;line-height:1.3;margin:0 0 6px;letter-spacing:-.02em;display:flex;align-items:center;gap:10px}
+h2 .no{display:inline-grid;place-items:center;flex:none;width:36px;height:36px;border-radius:10px;background:var(--ink);color:var(--bg);font-size:18px}
+.sub{color:var(--muted);margin:0 0 18px}
+h3{font-size:20px;line-height:1.4;margin:28px 0 10px}
+p{margin:0 0 12px}
+
+.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:var(--shadow)}
+.must{border:2px solid var(--ink);background:var(--surface);border-radius:20px;padding:20px 18px;margin-top:22px}
+.must h2{font-size:22px}
+.must ul{margin:0;padding:0;list-style:none}
+.must li{position:relative;padding:12px 0 12px 34px;border-top:1px solid var(--line)}
+.must li:first-child{border-top:0;padding-top:4px}
+.must li::before{content:"!";position:absolute;left:0;top:13px;width:24px;height:24px;border-radius:50%;background:var(--mark);color:#fff;font-weight:800;font-size:15px;display:grid;place-items:center}
+.must li:first-child::before{top:5px}
+.must li>b:first-child{display:block;font-size:18px;line-height:1.45;margin-bottom:2px}
+
+.note{border-radius:14px;padding:14px 16px;margin:14px 0;font-size:16px}
+.note>b:first-child{display:block;margin-bottom:2px}
+.note.ok{background:var(--ok-bg);color:var(--ink)} .note.ok>b:first-child{color:var(--ok)}
+.note.warn{background:var(--warn-bg)} .note.warn>b:first-child{color:var(--warn)}
+.note.info{background:var(--info-bg)} .note.info>b:first-child{color:var(--info)}
+
+/* 단계 — 번호 동그라미가 도로 중앙선처럼 이어진다 */
+.steps{list-style:none;margin:8px 0 0;padding:0;counter-reset:s}
+.steps>li{counter-increment:s;position:relative;padding:0 0 26px 50px}
+.steps>li::before{content:counter(s);position:absolute;left:0;top:0;width:34px;height:34px;border-radius:50%;background:var(--ink);color:var(--bg);font-weight:700;font-size:17px;display:grid;place-items:center;z-index:1}
+.steps>li::after{content:"";position:absolute;left:16px;top:40px;bottom:6px;border-left:2px dashed var(--line)}
+.steps>li:last-child::after{display:none}
+.steps>li>h4{font-size:18px;line-height:1.45;margin:4px 0 4px}
+.steps>li>p{margin:0 0 10px}
+.steps .shot,.steps .diagram{margin-left:-50px;position:relative;z-index:2}
+.steps .legend{position:relative;z-index:2;background:var(--bg)}
+@media (min-width:560px){.steps .shot,.steps .diagram{margin-left:0}}
+.kbd{display:inline-block;padding:0 7px;border-radius:7px;border:1px solid var(--line);background:var(--chip);font-weight:600;white-space:nowrap}
+
+/* 그림 + 누를 곳 표시 */
+.shot{margin:12px auto 6px;max-width:min(100%,var(--mw,340px));position:relative}
+.steps .shot{max-width:min(calc(100% + 50px),var(--mw,340px))}
+@media (min-width:560px){.steps .shot{max-width:min(100%,var(--mw,340px))}}
+.frame{position:relative;border-radius:16px;box-shadow:0 0 0 1px var(--line),0 10px 26px rgba(0,0,0,.12)}
+.frame img{display:block;width:100%;border-radius:16px}
+.marks{position:absolute;inset:0;pointer-events:none}
+.mk{position:absolute;left:calc(var(--x) - 4px);top:calc(var(--y) - 4px);width:calc(var(--w) + 8px);height:calc(var(--h) + 8px);border:3px solid var(--mark);border-radius:12px;box-shadow:0 0 0 2px rgba(255,255,255,.85)}
+.mk b{position:absolute;left:-13px;top:-13px;width:26px;height:26px;border-radius:50%;background:var(--mark);color:var(--mark-ink);font-size:15px;line-height:26px;text-align:center;box-shadow:0 0 0 2px #fff}
+.mk.bl b{top:auto;bottom:-13px}
+.mk.br b{left:auto;right:-13px;top:auto;bottom:-13px}
+figcaption{font-size:15px;color:var(--muted);margin-top:8px;text-align:center;line-height:1.5}
+figcaption small{display:block;font-size:14px;opacity:.85}
+.legend{list-style:none;margin:6px 0 0;padding:0}
+.legend li{display:flex;gap:10px;align-items:flex-start;padding:6px 0}
+.legend .n{flex:none;width:26px;height:26px;border-radius:50%;background:var(--mark);color:#fff;font-weight:700;font-size:15px;display:grid;place-items:center;margin-top:1px}
+
+
+.mock{background:#F2F2F7;color:#111;border-radius:22px;padding:14px 14px 16px;box-shadow:0 0 0 1px var(--line),0 10px 26px rgba(0,0,0,.12);font-size:16px;text-align:left}
+.m-bar{display:grid;grid-template-columns:44px 1fr 44px;align-items:center;margin-bottom:12px}
+.m-back{width:36px;height:36px;border-radius:50%;background:#fff;display:grid;place-items:center;font-size:26px;line-height:1;color:#111}
+.m-title{text-align:center;font-weight:600}
+.m-done{justify-self:end;color:#0A7AFF;font-weight:600;font-size:15px}
+.m-bar-big{grid-template-columns:1fr 44px}
+.m-big{font-size:28px;font-weight:700}
+.m-plus{justify-self:end;width:36px;height:36px;border-radius:50%;background:#fff;display:grid;place-items:center;font-size:20px}
+.m-group{background:#fff;border-radius:14px;overflow:visible}
+.m-row{position:relative;display:flex;justify-content:space-between;align-items:center;min-height:50px;padding:0 16px;border-top:1px solid #E5E5EA}
+.m-row:first-child{border-top:0}
+.m-row em{font-style:normal;color:#8A8A8E}
+.m-tick{color:#0A7AFF;font-weight:700}
+.m-blue{color:#0A7AFF;font-weight:600}
+.m-tap{outline:3px solid #E5302A;outline-offset:-1px;border-radius:12px;box-shadow:0 0 0 5px rgba(229,48,42,.15)}
+.pin{position:absolute;left:-12px;top:-12px;width:26px;height:26px;border-radius:50%;background:#E5302A;color:#fff;font-size:15px;line-height:26px;text-align:center;box-shadow:0 0 0 2px #fff}
+.m-cap{font-size:13px;color:#8A8A8E;margin:14px 6px 6px}
+.m-dim{opacity:.55}
+.m-note{font-size:15px;color:#6C6C70;margin:10px 4px 0}
+.m-actions{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.m-actions li{display:flex;align-items:center;gap:10px;background:#fff;border-radius:12px;min-height:48px;padding:0 14px;font-weight:600}
+.m-actions i{font-style:normal;color:#0A7AFF;margin-left:auto;font-weight:600}
+.m-ic{width:22px;height:22px;border-radius:6px;flex:none}
+.m-ic-wait{background:#8E8E93}.m-ic-out{background:#FF2D55}.m-ic-vol{background:#FF9500}
+.m-auto{display:flex;align-items:center;gap:12px;background:#fff;border-radius:14px;padding:12px 14px;margin-top:8px}
+.m-auto b{display:block;font-size:16px}
+.m-auto span{font-size:14px;color:#6C6C70}
+.m-auto-opt{opacity:.7}
+.m-tagr{flex:none;width:30px;height:30px;border-radius:50%;background:#0A7AFF;color:#fff;display:grid;place-items:center;font-weight:700;font-size:15px}
+
+
+.diagram{margin:14px 0 6px}
+.dg-cols{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.dg-card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px 14px 12px}
+.dg-key{border:2px solid var(--mark)}
+.dg-kicker{font-size:15px;font-weight:700;color:var(--muted);margin:0}
+.dg-what{font-size:20px;font-weight:800;margin:2px 0 6px;line-height:1.3}
+.dg-ex{font-size:15px;color:var(--muted);margin:0 0 10px;line-height:1.45}
+.dg-yes,.dg-no{font-size:15px;font-weight:700;margin:0}
+.dg-yes{color:var(--ok)} .dg-no{color:var(--mark)}
+.dg-sum{margin:10px 0 0;padding:12px 14px;border-radius:14px;background:var(--chip);font-size:16px}
+.diagram figcaption{text-align:left}
+
+/* 자동화 세 개 요약 */
+.autos{display:grid;gap:10px;margin:14px 0}
+.auto{display:grid;grid-template-columns:44px 1fr;gap:12px;align-items:start;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px}
+.auto .tag{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;font-weight:800;font-size:20px;background:var(--ink);color:var(--bg)}
+.auto.opt .tag{background:var(--chip);color:var(--ink);border:1px dashed var(--muted)}
+.auto h4{margin:0 0 2px;font-size:17px;line-height:1.4}
+.auto p{margin:0;font-size:16px;color:var(--muted)}
+.flow{display:flex;flex-wrap:wrap;gap:4px 6px;align-items:center;margin-top:6px}
+.flow span{background:var(--chip);border-radius:8px;padding:2px 8px;font-size:15px;color:var(--ink);font-weight:600}
+.flow em{font-style:normal;color:var(--muted)}
+.badge{display:inline-block;font-size:12px;font-weight:700;border-radius:6px;padding:1px 7px;margin-left:6px;vertical-align:2px}
+.badge.req{background:var(--mark);color:#fff}.badge.opt{background:var(--chip);color:var(--muted)}
+.badge.rec{background:var(--info-bg);color:var(--info);box-shadow:inset 0 0 0 1px var(--info)}
+.auto.rec .tag{background:var(--surface);color:var(--ink);border:2px solid var(--ink)}
+ul.plain{margin:0 0 10px;padding-left:20px}
+ul.plain li{margin:4px 0}
+
+/* 자주 묻는 질문 */
+.faq details{background:var(--surface);border:1px solid var(--line);border-radius:16px;margin:10px 0;overflow:hidden}
+.faq summary{list-style:none;cursor:pointer;min-height:56px;padding:14px 48px 14px 16px;font-weight:700;font-size:17px;line-height:1.45;position:relative}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";position:absolute;right:20px;top:50%;width:10px;height:10px;border-right:2.5px solid var(--muted);border-bottom:2.5px solid var(--muted);transform:translateY(-70%) rotate(45deg);transition:transform .2s}
+.faq details[open] summary::after{transform:translateY(-30%) rotate(-135deg)}
+.faq .a{padding:0 16px 16px}
+.faq .a ul,.faq .a ol{padding-left:20px;margin:6px 0 10px}
+.faq .a li{margin:4px 0}
+.checklist{list-style:none;padding:0!important}
+.checklist li{position:relative;padding-left:28px}
+.checklist li::before{content:"";position:absolute;left:2px;top:6px;width:16px;height:16px;border:2px solid var(--muted);border-radius:5px}
+
+.contact{display:grid;gap:10px;margin-top:14px}
+.btn{display:flex;align-items:center;justify-content:center;min-height:52px;border-radius:14px;background:var(--ink);color:var(--bg);font-weight:700;text-decoration:none;padding:0 18px;text-align:center}
+.btn.ghost{background:var(--surface);color:var(--ink);border:1px solid var(--line)}
+footer{border-top:1px solid var(--line);padding:22px 0 90px;color:var(--muted);font-size:15px}
+footer a{color:var(--muted);display:inline-block;padding:12px 4px;margin:-12px 0}
+.top{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom));width:48px;height:48px;border-radius:50%;background:var(--ink);color:var(--bg);display:grid;place-items:center;text-decoration:none;font-size:20px;box-shadow:0 6px 18px rgba(0,0,0,.2);z-index:30}
+
+@media (min-width:960px){
+  body{font-size:18px}
+  .hero h1{font-size:40px}
+}
+@media print{.toc,.top{display:none}.steps>li{break-inside:avoid}}
+/* 1.0.6 원고: 새 그림 자리(촬영 뒤 fig 자리표로 바꿈), 말하기 예, 새 배지 */
+.ph{margin:12px auto 6px;max-width:min(100%,var(--mw,340px));min-height:120px;border:2px dashed var(--muted);border-radius:16px;background:var(--surface);color:var(--muted);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:16px;text-align:center;font-size:15px;line-height:1.5}
+.ph b{color:var(--ink)}
+.say{background:var(--chip);border-radius:12px;padding:8px 14px;font-weight:600;margin:6px 0 10px}
+h4.h4{font-size:18px;line-height:1.45;margin:20px 0 6px}
+.tipbox{border:2px solid var(--info);background:var(--info-bg);border-radius:20px;padding:18px 16px 8px;margin:22px 0}
+.tipbox h3{margin:2px 0 6px}
+.tip-kicker{display:inline-block;margin:0;padding:2px 10px;border-radius:999px;background:var(--info);color:var(--surface);font-size:14px;font-weight:700}
+.tipbox .say{background:var(--surface)}
+.tipbox .steps .shot,.tipbox .steps .ph{margin-left:0}
+.badge.new{background:var(--ok-bg);color:var(--ok);box-shadow:inset 0 0 0 1px var(--ok)}
+
+/* ===== 홈페이지 톤으로 통일 (11-14) ===== */
+:root,:root[data-theme="dark"],:root:not([data-theme="light"]){
+  --bg:#000;--surface:#0d0d0f;--ink:#f5f5f7;--muted:#8b8b93;--line:rgba(255,255,255,.09);
+  --hero:#000;--hero-ink:#f5f5f7;--mark:#ff4d55;--mark-ink:#fff;--ok:#4acb86;--ok-bg:rgba(74,203,134,.10);
+  --warn:#f3a55a;--warn-bg:rgba(243,165,90,.10);--info:#c8c8ce;--info-bg:#121215;--chip:#1a1a1d;--shadow:none;
+  --font:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo",sans-serif;
+}
+html{scroll-padding-top:136px;background:#000}
+body{background:#000;letter-spacing:-.01em}
+::selection{background:rgba(255,77,85,.35);color:#fff}
+a{color:#f5f5f7;text-decoration:underline;text-decoration-color:rgba(255,255,255,.35)}
+a:hover{text-decoration-color:#fff}
+h1,h2,h3,h4,summary{text-wrap:balance} p,li{text-wrap:pretty}
+/* 위쪽 메뉴 */
+.rs-nav{position:sticky;top:0;z-index:40;background:rgba(0,0,0,.72);-webkit-backdrop-filter:saturate(1.6) blur(18px);backdrop-filter:saturate(1.6) blur(18px);border-bottom:1px solid var(--line)}
+.rs-wrap{max-width:1180px;margin:0 auto;padding:0 clamp(16px,4vw,40px)}
+.rs-nav .rs-wrap{height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.rs-brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:17px;letter-spacing:-.02em;color:#f5f5f7;text-decoration:none}
+.rs-brand img{width:30px;height:30px;border-radius:8px;box-shadow:0 0 0 1px rgba(255,255,255,.14)}
+.rs-nav nav{display:flex;align-items:center;gap:22px}
+.rs-link{font-size:14.5px;color:#c8c8ce;text-decoration:none}
+.rs-link:hover{color:#fff}
+.rs-dl{display:inline-flex;align-items:center;height:38px;padding:0 16px;border-radius:999px;background:#fff;color:#000!important;font-weight:600;font-size:14px;text-decoration:none}
+@media (max-width:620px){.rs-link{display:none}}
+/* 머리 */
+.g-hero{padding:clamp(56px,9vw,104px) 0 clamp(28px,4vw,44px);text-align:center;position:relative;overflow:hidden}
+.g-hero::before{content:"";position:absolute;left:50%;top:-40%;translate:-50% 0;width:900px;height:600px;background:radial-gradient(closest-side,rgba(255,77,85,.10),rgba(255,255,255,.03) 55%,transparent);pointer-events:none}
+.g-hero::before{-webkit-mask-image:linear-gradient(180deg,#000 45%,transparent 92%);mask-image:linear-gradient(180deg,#000 45%,transparent 92%)}
+.g-kicker{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:700;color:var(--mark);margin:0 0 14px}
+.g-kicker::before,.g-kicker::after{content:"";width:6px;height:6px;border-radius:50%;background:var(--mark);box-shadow:0 0 12px var(--mark)}
+.g-kicker::after{visibility:hidden}
+.g-hero h1{font-size:clamp(34px,5vw,56px);line-height:1.15;letter-spacing:-.045em;font-weight:800;margin:0 0 16px;background:linear-gradient(180deg,#fff 30%,#b4b4bc);-webkit-background-clip:text;background-clip:text;color:transparent;padding-bottom:.06em}
+.g-hero .lead{color:#c8c8ce;font-size:clamp(16px,1.6vw,18px);margin:0 0 14px}
+.g-hero .ver{display:inline-block;font-size:13px;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:5px 12px;margin:0}
+/* 목차 */
+.toc{top:64px;background:rgba(0,0,0,.78);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+.toc a{background:#141416;color:#c8c8ce;box-shadow:inset 0 0 0 1px var(--line);text-decoration:none}
+.toc a span{background:#2a2a2e;color:#fff}
+.toc a[aria-current="true"]{background:#fff;color:#000}
+.toc a[aria-current="true"] span{background:#000;color:#fff}
+/* 본문 */
+main.wrap{max-width:780px}
+section{padding-top:56px}
+h2{font-size:clamp(26px,3vw,32px);letter-spacing:-.035em;font-weight:800}
+h2 .no{width:34px;height:34px;border-radius:50%;background:#fff;color:#000;font-size:16px}
+h3{letter-spacing:-.03em}
+.sub{color:var(--muted)}
+.must{border:0;background:linear-gradient(180deg,#141416,#0d0d0f);box-shadow:inset 0 0 0 1px rgba(255,77,85,.35);border-radius:24px;padding:24px 22px}
+.card,.dg-card,.auto,.faq details{background:var(--surface);border:0;box-shadow:inset 0 0 0 1px var(--line)}
+.note{border-radius:16px;box-shadow:inset 0 0 0 1px var(--line)}
+.note.info{background:#121215}
+.steps>li::before{background:#fff;color:#000}
+.steps>li::after{border-left:1px dashed rgba(255,255,255,.18)}
+.kbd{background:#1a1a1d;border-color:rgba(255,255,255,.14);color:#fff}
+.frame{box-shadow:0 0 0 1px rgba(255,255,255,.12),0 20px 40px -18px rgba(0,0,0,.9);border-radius:18px}
+.frame img{border-radius:18px}
+.mk{box-shadow:0 0 0 2px rgba(0,0,0,.6)}
+.mk b{box-shadow:0 0 0 2px #000}
+figcaption{color:var(--muted)}
+.tipbox{border:0;background:linear-gradient(180deg,#141416,#0d0d0f);box-shadow:inset 0 0 0 1px var(--line);border-radius:24px}
+.tip-kicker{background:#fff;color:#000}
+.tipbox .say{background:#1a1a1d}
+.say{background:#1a1a1d;color:#fff}
+.badge.new{background:rgba(255,77,85,.12);color:#ff8a90;box-shadow:inset 0 0 0 1px rgba(255,77,85,.4)}
+.faq summary{color:#f5f5f7}
+.btn{background:#fff;color:#000;border-radius:999px;text-decoration:none}
+.btn.ghost{background:#141416;color:#fff;border:0;box-shadow:inset 0 0 0 1px var(--line)}
+.top{background:#fff;color:#000;box-shadow:0 8px 24px rgba(0,0,0,.6)}
+/* 아래쪽 */
+.rs-foot{border-top:1px solid var(--line);padding:48px 0 calc(90px + env(safe-area-inset-bottom));margin-top:40px;color:var(--muted);font-size:14px}
+.rs-row{display:flex;justify-content:space-between;gap:32px;flex-wrap:wrap}
+.rs-foot .rs-brand{margin-bottom:12px}
+.rs-note{font-size:13px;line-height:1.75;max-width:520px;margin:0}
+.rs-cols{display:flex;gap:56px}
+.rs-foot h4{font-size:13px;font-weight:600;margin:0 0 12px;color:var(--muted)}
+.rs-foot ul{list-style:none;margin:0;padding:0;display:grid;gap:9px;font-size:14.5px}
+.rs-foot ul a{color:#c8c8ce;text-decoration:none;padding:0;margin:0;display:inline}
+.rs-foot ul a:hover{color:#fff}
+.rs-copy{margin:36px 0 0;padding-top:20px;border-top:1px solid var(--line);font-size:12.5px}
+</style>
+</head>
+<body id="top">
+<header class="rs-nav" id="rsNav">
+  <div class="rs-wrap">
+    <a class="rs-brand" href="./" aria-label="로드센트리 홈"><img src="home/icon-96.png" alt="" width="30" height="30">RoadSentry</a>
+    <nav aria-label="사이트">
+      <a class="rs-link" href="./">홈</a>
+      <a class="rs-link" href="#faq">자주 묻는 질문</a>
+    </nav>
+  </div>
+</header>
+<section class="g-hero">
+  <div class="wrap">
+    <p class="g-kicker">사용 설명서 · 안드로이드</p>
+    <h1>그림으로 보는<br>로드센트리 사용법</h1>
+    <p class="lead">안드로이드 휴대폰용이에요. 실제 화면을 보면서 그대로 따라 하면 돼요.<br>처음 설치부터 첫 출발 준비까지 금방 끝나요.</p>
+    <p class="ver">안드로이드 앱 1.0.0 기준 · 2026년 11월</p>
+  </div>
+</section>
+
+<nav class="toc" aria-label="목차">
+  <ol>
+    <li><a href="#read-first"><span>!</span>먼저 읽기</a></li>
+    <li><a href="#start"><span>1</span>처음 시작</a></li>
+    <li><a href="#auto"><span>2</span>자동 시작</a></li>
+    <li><a href="#check"><span>3</span>잘 되는지 확인</a></li>
+    <li><a href="#tesla"><span>4</span>차량 등록</a></li>
+    <li><a href="#send"><span>5</span>목적지 보내기</a></li>
+    <li><a href="#money"><span>6</span>충전·통행료·기록</a></li>
+    <li><a href="#new"><span>7</span>그 밖의 기능</a></li>
+    <li><a href="#faq"><span>8</span>자주 묻는 질문</a></li>
+    <li><a href="#contact"><span>9</span>문의</a></li>
+  </ol>
+</nav>
+
+<main class="wrap">
+
+<section id="read-first">
+  <div class="must">
+    <h2>먼저 꼭 읽어 주세요</h2>
+    <ul>
+      <li><b>휴대폰 설정 네 가지를 꼭 해 주세요.</b>
+        위치 ‘항상 허용’, 알림 허용, 배터리 ‘제한 없음’, 삼성 휴대폰은 ‘절대 잠자기 안 함 앱’에 추가. 그래야 화면이 꺼져 있어도 안내가 이어지고, 차에 타면 감시가 저절로 시작돼요. 처음 실행할 때 차례대로 안내해 드려요. <a href="#start">1. 처음 시작하기</a></li>
+      <li><b>차량을 등록하면 차에 타기만 해도 감시가 시작돼요.</b>
+        처음 한 번은 차에 탄 채로 ‘내 차 찾기’를 누르거나 앱을 연 채로 출발해 주세요. 다음부터는 차에 타서 D를 넣으면 저절로 시작돼요. <a href="#auto">2. 자동 시작</a></li>
+      <li><b>저절로 시작돼도 앱 화면은 열리지 않아요.</b>
+        휴대폰이 잠겨 있어도 잠금화면과 알림창에 주행 알림이 떠요. 알림의 <span class="kbd">감시 종료</span>로 바로 끌 수 있어요. 켜졌는지 보는 법은 <a href="#check">3. 잘 되는지 확인</a>에서 알려 드려요.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="start">
+  <h2><span class="no">1</span>처음 시작하기</h2>
+  <p class="sub">설치하고 권한을 허용하는 단계예요. 한 번만 하면 돼요. 안드로이드 12 이상에서 쓸 수 있어요.</p>
+  <ol class="steps">
+    <li>
+      <h4>Play 스토어에서 ‘RoadSentry’를 설치해요</h4>
+      <p>무료예요. 회원 가입이나 로그인은 없어요.</p>
+    </li>
+    <li>
+      <h4>소개를 넘기고, 약관 두 칸을 체크해 동의해요</h4>
+      <p>위치서비스 이용약관 핵심 내용이 나와요. <b>약관 동의</b>와 <b>‘본인은 만 14세 이상입니다’</b>를 체크하고 <span class="kbd">동의하고 계속</span>을 눌러요. <span class="kbd">전문 보기</span>로 전체 약관을 볼 수 있어요.</p>
+      <figure class="shot" style="--mw:300px"><div class="frame"><img src="android-assets/terms.webp" width="300" height="197" alt="약관 동의 화면의 두 체크 칸과 동의하고 계속 버튼" loading="lazy" decoding="async"><span class="marks" aria-hidden="true"><span class="mk" style="--x:4.81%;--y:28.17%;--w:90.37%;--h:29.58%"><b>1</b></span><span class="mk" style="--x:6.67%;--y:66.9%;--w:86.67%;--h:22.54%"><b>2</b></span></span></div><figcaption>① 두 칸 체크 · ② 동의하고 계속<small>RoadSentry 안드로이드 화면</small></figcaption></figure>
+    </li>
+    <li>
+      <h4><span class="kbd">위치 허용</span> → ‘정확한 위치’를 고른 채 ‘앱 사용 중에만 허용’</h4>
+      <p>안드로이드 권한 창이 떠요. 위쪽 그림에서 <b>정확한 위치</b>를 고른 채 <b>‘앱 사용 중에만 허용’</b>을 눌러요. ‘이번만 허용’은 고르지 마세요.</p>
+      <figure class="shot" style="--mw:300px"><div class="frame"><img src="android-assets/location-dialog.webp" width="300" height="447" alt="안드로이드 위치 권한 창" loading="lazy" decoding="async"><span class="marks" aria-hidden="true"><span class="mk" style="--x:10.4%;--y:33.22%;--w:36.0%;--h:27.85%"><b>1</b></span><span class="mk" style="--x:9.3%;--y:65.84%;--w:81.4%;--h:9.66%"><b>2</b></span></span></div><figcaption>① 정확한 위치 · ② 앱 사용 중에만 허용<small>안드로이드 위치 권한 창 · 휴대폰에 따라 모양이 조금 달라요</small></figcaption></figure>
+    </li>
+    <li>
+      <h4>바로 이어서 뜨는 알림 권한 창에서 ‘허용’</h4>
+      <p>감시하는 동안 알림에 다음 카메라와 속도를 보여 주고, 알림에서 바로 감시를 끌 수 있어요. 자동으로 시작하지 못했을 때와 휴대폰 음량이 너무 작을 때도 알림으로 알려 드려요. 허용하지 않아도 안내 음성은 나와요.</p>
+      <figure class="shot" style="--mw:300px"><div class="frame"><img src="android-assets/notification-dialog.webp" width="300" height="238" alt="안드로이드 알림 권한 창" loading="lazy" decoding="async"><span class="marks" aria-hidden="true"><span class="mk" style="--x:9.3%;--y:53.21%;--w:81.4%;--h:18.11%"><b>1</b></span></span></div><figcaption>① 허용<small>안드로이드 알림 권한 창</small></figcaption></figure>
+    </li>
+    <li>
+      <h4>위치 줄의 <span class="kbd">설정 열기</span> → ‘계속’ → ‘항상 허용’</h4>
+      <p>‘앱을 닫아 둔 동안에도 위치를 사용해요’ 안내가 떠요. 화면이 꺼져 있어도 단속카메라를 안내하고, 차에 타서 출발하면 앱을 열지 않아도 감시를 시작하려면 꼭 필요해요. <span class="kbd">계속</span>을 누르면 휴대폰 설정의 위치 권한 화면이 열려요. <b>‘항상 허용’</b>을 고르고 뒤로 돌아와요.</p>
+      <figure class="shot" style="--mw:300px"><div class="frame"><img src="android-assets/bg-notice.webp" width="300" height="240" alt="앱을 닫아 둔 동안에도 위치를 사용해요 안내 창" loading="lazy" decoding="async"><span class="marks" aria-hidden="true"><span class="mk" style="--x:4.2%;--y:63.55%;--w:91.59%;--h:15.32%"><b>1</b></span></span></div><figcaption>① 계속<small>RoadSentry 안드로이드 화면</small></figcaption></figure>
+      <figure class="shot" style="--mw:300px"><div class="frame"><img src="android-assets/bg-always.webp" width="300" height="434" alt="휴대폰 설정의 위치 권한 화면에서 항상 허용" loading="lazy" decoding="async"><span class="marks" aria-hidden="true"><span class="mk" style="--x:3.7%;--y:68.33%;--w:92.59%;--h:5.77%"><b>1</b></span></span></div><figcaption>① 항상 허용<small>휴대폰 설정의 위치 권한 화면 · 휴대폰에 따라 글자가 조금 달라요</small></figcaption></figure>
+    </li>
+    <li>
+      <h4>배터리 사용을 ‘제한 없음’으로 바꿔요</h4>
+      <p>휴대폰이 앱을 잠재우면 화면이 꺼진 동안 안내가 멈추거나, 차에 타도 저절로 시작되지 않을 수 있어요. 감시하지 않을 때는 GPS를 계속 켜 두지 않아요.</p>
+      <ul class="plain">
+        <li><span class="kbd">설정 열기</span>를 누르면 RoadSentry 앱 정보가 열려요.</li>
+        <li><b>‘앱 배터리 사용량’</b>을 눌러요. 삼성은 <b>‘배터리’</b>를 눌러요.</li>
+        <li><b>‘제한 없음’</b>을 골라요. 안 보이면 ‘백그라운드 사용 허용’을 먼저 눌러요.</li>
+      </ul>
+      <figure class="shot" style="--mw:300px"><div class="frame"><img src="android-assets/battery.webp" width="300" height="572" alt="배터리 사용을 제한 없음으로 바꾸는 안내 화면" loading="lazy" decoding="async"><span class="marks" aria-hidden="true"><span class="mk" style="--x:6.67%;--y:92.72%;--w:86.67%;--h:6.8%"><b>1</b></span></span></div><figcaption>① 설정 열기<small>RoadSentry 안드로이드 화면</small></figcaption></figure>
+    </li>
+    <li>
+      <h4>삼성 휴대폰은 한 가지 더: ‘절대 잠자기 안 함 앱’</h4>
+      <p>삼성 휴대폰은 한동안 쓰지 않은 앱을 잠재워요. 이 단계는 삼성 휴대폰에서만 나와요.</p>
+      <ul class="plain">
+        <li>휴대폰 <b>설정 › 배터리</b>를 열어요.</li>
+        <li><b>백그라운드 사용 한도 › 절대 잠자기 안 함 앱</b>을 눌러요.</li>
+        <li><b>＋</b>를 눌러 RoadSentry를 추가해요.</li>
+      </ul>
+      <figure class="shot" style="--mw:300px"><div class="frame"><img src="android-assets/samsung.webp" width="300" height="528" alt="삼성 휴대폰의 절대 잠자기 안 함 앱 안내 화면" loading="lazy" decoding="async"><span class="marks" aria-hidden="true"><span class="mk" style="--x:6.67%;--y:91.58%;--w:86.67%;--h:7.89%"><b>1</b></span></span></div><figcaption>① 설정 열기<small>RoadSentry 안드로이드 화면 · 삼성 휴대폰에서만 나와요</small></figcaption></figure>
+    </li>
+    <li>
+      <h4>마지막 화면에서 <span class="kbd">시작하기</span> → ‘감시 종료’ 버튼이 보이면 켜진 거예요</h4>
+      <p>버튼 글자가 <b>‘감시 종료’</b>면 지금 감시 중이에요. ‘감시 시작’일 때만 눌러 주세요.</p>
+      <figure class="shot" style="--mw:300px"><div class="frame"><img src="android-assets/home-monitoring.webp" width="300" height="406" alt="홈의 감시 종료 버튼" loading="lazy" decoding="async"><span class="marks" aria-hidden="true"><span class="mk" style="--x:5.65%;--y:81.69%;--w:88.7%;--h:9.36%"><b>1</b></span></span></div><figcaption>① 감시 종료가 보이면 켜진 상태<small>RoadSentry 안드로이드 화면</small></figcaption></figure>
+    </li>
+  </ol>
+  <div class="note info">
+    <b>권한이나 배터리 설정을 놓쳤다면</b>
+    휴대폰 <span class="kbd">설정</span> → <span class="kbd">애플리케이션</span>(휴대폰에 따라 ‘앱’) → <span class="kbd">RoadSentry</span>에서 바꿔요.
+    <ul class="plain">
+      <li><b>권한 → 위치</b>: ‘항상 허용’, ‘정확한 위치 사용’ 켬</li>
+      <li><b>알림</b>: 허용</li>
+      <li><b>배터리</b>(또는 ‘앱 배터리 사용량’): ‘제한 없음’</li>
+    </ul>
+    앱의 설정 → 알림 → 감시 동작 → <b>위치 권한</b> 줄에서도 <span class="kbd">설정 열기</span>로 바로 갈 수 있어요.
+  </div>
+  <p>차량 등록·자동 시작·소리 설정은 나중에 해도 돼요. 필요할 때 홈과 설정에서 안내해 드려요. 처음 실행 안내는 설정 → 도움말 → <b>사용방법 소개</b>에서 다시 볼 수 있어요.</p>
+</section>
+
+<section id="auto">
+  <h2><span class="no">2</span>자동 시작</h2>
+  <p class="sub"><b>차량을 등록하면</b> 차에 타서 D를 넣는 것만으로 감시가 저절로 시작돼요.</p>
+
+  <div class="note ok">
+    <b>처음 한 번만 준비해 주세요</b>
+    차에 탄 채로 자동 시작 카드의 ‘내 차 찾기’를 누르거나, 앱을 연 채로 한 번 출발하면 돼요. 그다음부터는 차에 타서 D를 넣기만 하면 시작돼요. 앱 화면은 열리지 않아요. 차 안에서 쉬다가 다시 출발해도 대부분 D를 넣으면 바로 다시 시작돼요.
+  </div>
+
+  <h3>준비물</h3>
+  <ul class="plain">
+    <li><b>차량 등록</b>을 마쳤어요. (<a href="#tesla">4. 차량 등록</a>)</li>
+    <li>설정 → 차량 연결 · 전비에서 <b>‘차에 타면 자동 연결’</b>과 <b>‘기어로 시작·종료’</b>가 켜져 있어요. (기본 켬)</li>
+    <li>위치 권한이 <b>‘항상 허용’</b>이고 <b>‘정확한 위치 사용’</b>이 켜져 있어요.</li>
+    <li>배터리 사용이 <b>‘제한 없음’</b>이에요. 삼성 휴대폰은 ‘절대 잠자기 안 함 앱’에도 넣어 주세요. (<a href="#start">1. 처음 시작하기</a>)</li>
+    <li>위치서비스 이용약관에 동의했어요.</li>
+  </ul>
+
+  <h3>이렇게 시작돼요</h3>
+  <ol class="steps">
+    <li>
+      <h4>차량을 등록해요</h4>
+      <p>등록 방법은 <a href="#tesla">4장</a>에 있어요.</p>
+    </li>
+    <li>
+      <h4>설정 → 알림 → 맨 아래 ‘차에 타면 자동 시작’ 카드를 봐요</h4>
+      <p>처음에는 <b>‘준비 중’</b>이 보여요. 차에 탄 채로 <span class="kbd">내 차 찾기</span>를 눌러 주세요. 앱을 연 채로 한 번 출발해도 돼요.</p>
+      <figure class="shot" style="--mw:340px"><div class="frame"><img src="android-assets/auto-learning.webp" width="340" height="284" alt="자동 시작 카드 준비 중" loading="lazy" decoding="async"></div><figcaption><small>설정 → 알림 → 자동 시작 카드 ‘준비 중’</small></figcaption></figure>
+    </li>
+    <li>
+      <h4>카드에 <b>‘준비됨’</b>이 보이면 다 된 거예요</h4>
+      <p>다음부터는 차에 타서 D만 넣으면 “주행을 시작합니다”라고 말하며 감시가 켜져요. 카드 아래에 ‘최근 5번 중 4번 저절로 시작했어요.’처럼 저절로 시작한 횟수가 보여요.</p>
+      <figure class="shot" style="--mw:340px"><div class="frame"><img src="android-assets/auto-ready.webp" width="340" height="164" alt="자동 시작 카드 준비됨" loading="lazy" decoding="async"></div><figcaption><small>설정 → 알림 → 자동 시작 카드 ‘준비됨’</small></figcaption></figure>
+    </li>
+  </ol>
+
+  <h3>카드가 알려 주는 상태</h3>
+  <ul class="plain">
+    <li><b>준비됨</b>: 차에 타서 출발하면 자동으로 시작돼요.</li>
+    <li><b>준비 중</b>: 차에 탄 채로 ‘내 차 찾기’를 누르거나 앱을 연 채로 한 번 출발해 주세요.</li>
+    <li><b>확인 필요</b>: 카드 아래 한 줄대로 해 주세요. <span class="kbd">설정 열기</span>를 누르면 휴대폰 설정이 바로 열려요.</li>
+    <li><b>설정 전</b>: 차량 등록 전이면 <span class="kbd">차량 등록하기</span>를 눌러 등록을 먼저 하고, 등록했다면 두 스위치와 약관 동의를 확인해 주세요.</li>
+  </ul>
+  <p>카드의 <span class="kbd">자세히 알아보기</span>에서 필요한 휴대폰 설정을 한눈에 볼 수 있어요.</p>
+
+  <h3 id="lockcard">잠금화면과 알림창의 주행 알림</h3>
+  <p>감시가 시작되면 잠금화면과 알림창에 주행 알림이 바로 떠요. 지금 속도, 제한속도, 앞쪽 카메라까지 남은 거리를 보여 주고, <span class="kbd">감시 종료</span>로 바로 끌 수 있어요. 무엇이 보이는지는 <a href="#lockcard-design">7. 주행 알림 모양</a>에 있어요.</p>
+  <ul class="plain">
+    <li>알림을 옆으로 밀어 없애면 그 주행에서는 다시 띄우지 않아요. 다음 주행에서 다시 떠요. 감시와 안내 음성은 그대로예요.</li>
+    <li>잠금화면에 안 보이면 알림이 허용돼 있는지, 휴대폰 설정의 잠금화면 알림 설정에서 알림 내용을 보이게 했는지 확인해 주세요.</li>
+  </ul>
+
+  <h3>‘자동으로 시작하지 못했어요’ 알림이 왔다면</h3>
+  <p>휴대폰이 앱을 막아 저절로 시작하지 못한 거예요. <b>알림을 누르면 바로 감시가 시작돼요.</b> 알림에 적힌 대로 배터리 사용을 <b>‘제한 없음’</b>으로, 또는 위치 권한을 <b>‘항상 허용’</b>으로 바꿔 두면 다음부터 저절로 시작돼요.</p>
+
+  <div class="note warn">
+    <b>‘강제 중지’를 누르면 자동 시작이 멈춰요</b>
+    휴대폰 설정 → 애플리케이션 → RoadSentry에서 ‘강제 중지’를 누르면, 다음에 앱을 열 때까지 차에 타도 저절로 시작되지 않아요. 앱을 한 번 열면 다시 켜지고 ‘자동 시작이 잠시 꺼져 있었어요’ 알림이 한 번 떠요. 최근 앱 목록에서 앱을 밀어 닫는 것은 괜찮아요.
+  </div>
+
+  <h3 id="rest">차 안에서 쉬는 동안</h3>
+  <p>P를 넣고 차 안에서 쉬는 동안에는 알림창에 <b>‘차에서 출발을 기다리고 있어요’</b> 알림이 보일 수 있어요. 이때 기어를 D에 넣으면 바로 “주행을 시작합니다”라고 말하며 감시가 켜져요. 차에서 내리면 알림이 사라져요.</p>
+
+  <h3>내리면 저절로 정리해요</h3>
+  <p>P를 넣으면 감시가 바로 끝나고 주행 알림도 ‘주행 종료’를 잠깐 보여 준 뒤 사라져요. 차에서 내린 뒤의 정리도 앱이 스스로 해요. 주차한 뒤 잠시 동안 알림창에 조용한 <b>‘출발 대기’</b> 알림이 보일 수 있어요. 다시 출발하지 않으면 스스로 사라져요.</p>
+
+  <h3>저절로 시작을 끄고 싶을 때</h3>
+  <p>설정 → 차량 연결 · 전비에서 <b>‘차에 타면 자동 연결’</b>이나 <b>‘기어로 시작·종료’</b> 중 하나를 끄거나, 위치 권한을 ‘항상 허용’이 아닌 것으로 바꾸면 저절로 시작이 멈춰요. 다시 켜면 처음처럼 한 번 준비한 뒤부터 다시 저절로 시작돼요.</p>
+  <ul class="plain">
+    <li>‘차에 타면 자동 연결’을 끄면 D를 넣을 때 바로 시작하기와 <a href="#send">차로 보내기</a> 예약도 함께 꺼져요.</li>
+    <li>두 스위치를 모두 켜야 차에 타면 자동 시작이 돼요. 하나라도 끄면 저절로 시작이 꺼져요.</li>
+  </ul>
+  <p><b>차량을 등록하지 않았다면</b> 앱을 열면 감시가 켜져요(설정 → 알림 → ‘앱을 열면 자동 시작’, 기본 켬). 차량 등록을 하면 차에 타서 출발할 때 자동으로 시작돼요. (<a href="#tesla">4. 차량 등록</a>)</p>
+</section>
+
+<section id="check">
+  <h2><span class="no">3</span>잘 되는지 확인하기</h2>
+  <p class="sub">한 번 차에 타 보고, 앱에서 상태를 확인해요.</p>
+  <ol class="steps">
+    <li>
+      <h4>RoadSentry → 설정 → 알림 → 맨 아래 ‘차에 타면 자동 시작’</h4>
+      <figure class="shot" style="--mw:340px"><div class="frame"><img src="android-assets/alerts-autostart.webp" width="340" height="340" alt="설정 알림 화면 맨 아래의 자동 시작 카드" loading="lazy" decoding="async"><span class="marks" aria-hidden="true"><span class="mk" style="--x:5.56%;--y:45.37%;--w:88.89%;--h:52.78%"><b>1</b></span></span></div><figcaption>① 차에 타면 자동 시작 카드<small>설정 → 알림 맨 아래</small></figcaption></figure>
+    </li>
+    <li>
+      <h4>카드에 ‘준비됨’이 보이면 돼요</h4>
+      <p>‘준비 중’이면 차에 탄 채로 ‘내 차 찾기’를 누르거나 앱을 연 채로 한 번 출발해 주세요. ‘확인 필요’면 카드 아래 한 줄대로 해 주세요. (<a href="#auto">2. 자동 시작</a>)</p>
+    </li>
+    <li>
+      <h4>차에 타서 D를 넣어 보세요</h4>
+      <p>“주행을 시작합니다”라고 말하면 켜진 거예요. 잠금화면과 알림창에 주행 알림이 떠요(<a href="#lockcard">2. 주행 알림</a>). 앱을 열면 ‘감시 종료’ 버튼이 보여요.</p>
+    </li>
+  </ol>
+
+  <h3>차에서는 이렇게 동작해요</h3>
+  <div class="card">
+    <p><b>차량 등록을 했을 때</b> 차에 타서 D를 넣으면 바로 “주행을 시작합니다”라고 말하며 켜져요. P를 넣으면 바로 끝나요. (설정 → 차량 연결 · 전비의 ‘차에 타면 자동 연결’과 ‘기어로 시작·종료’가 켜져 있을 때예요. 지하 주차장에서도 마찬가지예요.)</p>
+    <p style="margin:0"><b>차량 등록을 안 했을 때</b> 앱을 열면 켜져요. 앱을 열어 ‘감시 종료’ 버튼이 보이는지로 확인해요.</p>
+  </div>
+</section>
+
+<section id="tesla">
+  <h2><span class="no">4</span>차량 등록 (테슬라) <span class="badge opt">선택</span></h2>
+  <p class="sub">안 해도 카메라 안내는 다 돼요. 등록하면 차에 타기만 해도 저절로 시작되고, 기어를 D에 넣으면 바로 시작하고 P에 넣으면 바로 끝나요. 전비를 계산하고, 목적지를 차로 보낼 수 있어요.</p>
+  <p>차 안이나 차 옆(10m 안)에서, 카드키를 손에 들고 시작해요. 휴대폰의 <b>블루투스</b>를 켜 두세요. 차 안에서 하면 3분이면 끝나요.</p>
+  <ol class="steps">
+    <li>
+      <h4>홈의 <span class="kbd">차량 등록</span>을 눌러요</h4>
+      <p>등록 전이면 홈에 ‘차량을 등록해 주세요’가 보여요. ‘나중에 하기’를 눌렀다면 설정 → 차량 연결 · 전비에서 시작할 수 있어요. 첫 화면에서 준비물을 보고 <span class="kbd">다음</span>을 눌러요.</p>
+      <figure class="shot" style="--mw:340px"><div class="frame"><img src="android-assets/home-register.webp" width="340" height="404" alt="홈의 차량을 등록해 주세요와 차량 등록 버튼" loading="lazy" decoding="async"><span class="marks" aria-hidden="true"><span class="mk" style="--x:23.33%;--y:48.29%;--w:53.33%;--h:8.96%"><b>1</b></span></span></div><figcaption>① 차량 등록<small>RoadSentry 안드로이드 화면</small></figcaption></figure>
+    </li>
+    <li>
+      <h4>차량 VIN 17자리를 넣고 <span class="kbd">차 찾기</span></h4>
+      <p>차 화면 → 소프트웨어에 나와요. 앞유리 왼쪽 아래에도 적혀 있어요. 복사해 둔 VIN이 있으면 <span class="kbd">붙여넣기</span>를 눌러요.</p>
+      <figure class="shot" style="--mw:300px"><div class="frame"><img src="android-assets/vin.webp" width="300" height="387" alt="차량 VIN 입력 화면" loading="lazy" decoding="async"><span class="marks" aria-hidden="true"><span class="mk" style="--x:5.65%;--y:52.73%;--w:88.33%;--h:12.7%"><b>1</b></span><span class="mk" style="--x:35.65%;--y:88.88%;--w:58.33%;--h:9.83%"><b>2</b></span></span></div><figcaption>① VIN 17자리 · ② 차 찾기<small>VIN은 가렸어요</small></figcaption></figure>
+    </li>
+    <li>
+      <h4>‘근처 기기’ 권한 창에서 ‘허용’</h4>
+      <p>휴대폰이 블루투스로 차를 찾으려면 필요해요. 놓쳤다면 화면의 <span class="kbd">설정 열기</span> → 권한 → 근처 기기를 허용해요.</p>
+      <figure class="shot" style="--mw:300px"><div class="frame"><img src="android-assets/nearby-dialog.webp" width="300" height="267" alt="안드로이드 근처 기기 권한 창" loading="lazy" decoding="async"><span class="marks" aria-hidden="true"><span class="mk" style="--x:9.3%;--y:56.07%;--w:81.4%;--h:16.18%"><b>1</b></span></span></div><figcaption>① 허용<small>안드로이드 ‘근처 기기’ 권한 창</small></figcaption></figure>
+    </li>
+    <li>
+      <h4>카드키를 대고 차 화면에서 ‘확인’</h4>
+      <p>카드키를 대면 차 화면에 키를 추가할지 묻는 창이 떠요. ‘확인’을 눌러 주세요. 카드키 인식 위치는 차종마다 달라요. 보통 센터 콘솔의 무선 충전 패드에 있어요. 차 화면 안내를 따르세요. 창을 닫아도 등록은 계속 진행돼요.</p>
+    </li>
+    <li>
+      <h4>‘등록됐어요’가 보이면 끝</h4>
+      <p>아래 <span class="kbd">연결 테스트</span>로 차와 실제로 연결되는지 확인해 보세요.</p>
+      <figure class="shot" style="--mw:300px"><div class="frame"><img src="android-assets/reg-done.webp" width="300" height="400" alt="등록됐어요 화면과 연결 테스트" loading="lazy" decoding="async"><span class="marks" aria-hidden="true"><span class="mk" style="--x:5.56%;--y:74.31%;--w:88.89%;--h:15.97%"><b>1</b></span></span></div><figcaption>① 연결 테스트<small>RoadSentry 안드로이드 화면</small></figcaption></figure>
+    </li>
+  </ol>
+  <div class="note warn">
+    <b>등록이 안 될 때</b>
+    화면에 원인과 할 일이 함께 나와요. 차를 찾지 못했다면 휴대폰을 들고 차 안이나 차 옆(10m 안)에서 <span class="kbd">다시 시도</span>를 눌러 주세요. 차가 잠들어 있으면 문을 한 번 열었다 닫아 깨운 뒤 해 보세요. 블루투스가 꺼져 있다면 화면 위에서 아래로 내려 빠른 설정에서 켜 주세요. 계속 안 되면 <a href="#contact">진단 기록</a>을 보내 주세요.
+  </div>
+
+  <h3>등록한 뒤 설정</h3>
+  <p>설정 → 차량 연결 · 전비에서 바꿔요.</p>
+  <figure class="shot" style="--mw:340px"><div class="frame"><img src="android-assets/vehicle-settings.webp" width="340" height="406" alt="차량 연결 전비 설정의 등록 버튼과 두 스위치" loading="lazy" decoding="async"><span class="marks" aria-hidden="true"><span class="mk" style="--x:6.67%;--y:10.85%;--w:63.7%;--h:7.75%"><b>1</b></span><span class="mk" style="--x:5.56%;--y:31.78%;--w:88.89%;--h:8.14%"><b>2</b></span><span class="mk" style="--x:5.56%;--y:69.38%;--w:88.89%;--h:8.14%"><b>3</b></span></span></div><figcaption>① 다시 등록 · 연결 테스트 · ② 차에 타면 자동 연결 · ③ 기어로 시작·종료<small>설정 → 차량 연결 · 전비</small></figcaption></figure>
+  <ul class="legend">
+    <li><span class="n">1</span><span>다시 등록 · 연결 테스트 (등록 해제는 옆 휴지통)</span></li>
+    <li><span class="n">2</span><span>차에 타면 자동 연결 (기본 켬). 출발하면 차에 연결해 기어·속도를 읽고, 주차(P)하면 바로 끊어요.</span></li>
+    <li><span class="n">3</span><span>기어로 시작·종료 (기본 켬). D를 넣으면 바로 시작하고, P를 넣으면 바로 끝나요.</span></li>
+  </ul>
+  <p>같은 화면의 <b>‘배터리 용량(kWh)’</b>은 숫자 칸에 바로 넣거나(소수 한 자리까지) −/+로 바꿀 수 있어요. 130까지 넣을 수 있어요. 전비 계산에 써요.</p>
+  <div class="note info">
+    <b>차 키와 같이 써도 돼요</b>
+    RoadSentry에는 문을 열거나 잠그는 기능이 없어요. 목적지를 차로 보내는 것도 D를 넣은 뒤에만 해요. 차 키 목록에 RoadSentry 키가 하나 보이는 것은 정상이에요. 휴대폰을 바꾸거나 앱을 지울 때는 앱에서 등록을 해제하고, 원하면 차 화면 ‘잠금’ 메뉴의 키 목록에서 그 키를 지워 주세요.
+  </div>
+
+  <h3 id="two-cars">차 2대 등록하기</h3>
+  <p>차를 <b>2대까지</b> 등록할 수 있어요. 설정 → 차량 연결 · 전비의 <b>‘차량 등록’</b> 아래 차 목록에서 관리해요. 앱이 어느 차에 탔는지 구분해서 주행·충전 기록에 남겨요.</p>
+  <ul class="plain">
+    <li><b>이름 붙이기</b>: 차 줄을 눌러 ‘차 이름(선택)’에 이름을 적고(예: 내 모델 Y) <span class="kbd">저장</span>을 눌러요. 12자까지 쓸 수 있어요. 비워 두면 ‘Model 3 · 5678’처럼 자동 이름으로 보여요.</li>
+    <li><b>두 번째 차</b>: 차가 1대일 때 차 목록 아래 <b>‘차 추가’</b>를 누르면 차량 등록이 처음부터 시작돼요. 주행 중에는 주행이 끝난 뒤에 할 수 있어요.</li>
+    <li><b>두 번째 차의 자동 시작 준비</b>: 그 차에 탄 채로 차 목록에서 그 차를 누르고 <span class="kbd">다시 찾기</span>를 눌러 주세요. 찾는 동안 화면을 잠시 열어 두세요.</li>
+    <li>2대일 때는 차 이름 창에서 <span class="kbd">지금 차로 정하기</span>로 ‘지금 차’를 바꾸거나 <span class="kbd">이 차 등록 해제</span>로 지울 수 있어요. 지워도 지난 기록은 그 이름 그대로 남아요.</li>
+    <li>기록 탭에서 차를 골라 그 차의 기록만 볼 수 있어요. (<a href="#records-cars">6. 기록 탭에서 차 고르기</a>)</li>
+  </ul>
+</section>
+
+<section id="send">
+  <h2><span class="no">5</span>테슬라로 목적지 보내기</h2>
+  <p class="sub">앱에서 고른 목적지를 테슬라 내비로 보내요. 차량 등록(<a href="#tesla">4장</a>)을 마친 분이 쓸 수 있어요.</p>
+  <div class="card">
+    <p><b>차에 타기 전에 보냈다면</b> 앱이 기억해 두었다가 차에 타서 D를 넣는 순간 보내요. 보낸 뒤 12시간 안에 출발하면 돼요.</p>
+    <p style="margin:0"><b>달리는 중이나 신호 대기 중에 보냈다면</b> 바로 보내요. 보낸 뒤 “차 화면에서 목적지를 눌러 주세요”라고 한 번 알려 드려요. 차 화면에 뜬 목적지를 한 번 누르면 안내가 시작돼요.</p>
+  </div>
+
+  <h3>[차로 보내기] 버튼</h3>
+  <p>목적지 검색 결과, 즐겨찾기, 최근 목적지 줄 오른쪽의 <span class="kbd">차로 보내기</span>를 누르면 돼요. 즐겨찾기는 주행 탭의 ‘목적지 선택’에서 열어요. 장소를 더하려면 목록 맨 위의 ‘장소 추가’를 눌러 장소를 찾은 뒤 별표를 눌러요.</p>
+  <figure class="shot" style="--mw:340px"><div class="frame"><img src="android-assets/fav-carsend.webp" width="340" height="233" alt="즐겨찾기 줄의 차로 보내기 버튼" loading="lazy" decoding="async"><span class="marks" aria-hidden="true"><span class="mk" style="--x:49.07%;--y:44.59%;--w:27.78%;--h:12.16%"><b>1</b></span></span></div><figcaption>① 차로 보내기<small>즐겨찾기 · 차에 타기 전이면 ‘예약됨’으로 바뀌어요</small></figcaption></figure>
+  <ul class="plain">
+    <li>차에 타기 전에 누르면 버튼이 ‘예약됨’으로 바뀌어요. D를 넣으면 차로 보내요(12시간 안).</li>
+    <li>보낸 뒤 차 화면에서 목적지를 누르면 ‘차 목적지를 바꿨어요’가 보여요. 1분 안에 바뀌지 않으면 ‘목적지는 그대로예요’와 함께 버튼이 다시 보내기로 바뀌어요.</li>
+    <li>지금 있는 곳에서 아주 먼 곳이면 얼마나 떨어진 곳인지 보여 주고 한 번 더 누르라고 해요. 맞으면 한 번 더 눌러요.</li>
+    <li>충전 경유지가 있는 경로에 보내면 경유지가 지워질 수 있다고 먼저 물어요. <span class="kbd">그래도 보내기</span> 또는 <span class="kbd">보내지 않기</span>를 골라요.</li>
+    <li>운전 중에는 동승자가 누르거나, 신호 대기로 멈췄을 때 눌러 주세요.</li>
+    <li>보내지 못했을 때는 <span class="kbd">테슬라 앱으로 보내기</span>가 보여요. 누르고 공유 창에서 Tesla를 고르면 돼요.</li>
+  </ul>
+
+  <h3 id="pick-on-map">지도에서 위치 골라 보내기</h3>
+  <p>검색한 장소의 입구가 다르거나 정확한 자리로 보내고 싶을 때 써요.</p>
+  <ol class="steps">
+    <li><h4>장소를 검색한 뒤 목록 아래 <span class="kbd">지도에서 직접 고르기</span>를 눌러요</h4>
+      <p>결과 줄을 길게 눌러 ‘지도에서 위치 고르기’를 골라도 돼요.</p></li>
+    <li><h4>지도를 움직여 가운데 핀을 원하는 곳에 맞춰요</h4>
+      <p>멈추면 그 자리의 이름을 찾아 보여 줘요.</p></li>
+    <li><h4><span class="kbd">이 위치를 차로 보내기</span>를 눌러요</h4>
+      <p>앱 목적지로만 정하려면 <span class="kbd">목적지로만 정하기</span>를 눌러요.</p></li>
+  </ol>
+
+  <h3 id="send-blocked">보낼 수 없을 때</h3>
+  <p>예약을 지킬 수 없는 상태면 예약하지 않고, 까닭을 한 줄로 알려 드려요. 대부분 그 아래 버튼으로 바로 고칠 수 있어요.</p>
+  <ul class="plain">
+    <li>차량을 등록하지 않았을 때: ‘차량 등록 후 쓸 수 있어요’와 <span class="kbd">차량 등록</span></li>
+    <li>‘차에 타면 자동 연결’이나 ‘기어로 시작·종료’가 꺼져 있을 때: 켜야 한다는 안내와 <span class="kbd">설정 열기</span></li>
+    <li>위치서비스 이용약관에 동의하지 않았을 때: 동의는 설정 → 도움말 → 위치서비스 이용약관에서 해요.</li>
+    <li>위치 권한이 꺼져 있을 때: <span class="kbd">설정 열기</span>(휴대폰 설정)</li>
+    <li>차가 이 휴대폰의 키를 모를 때: 다시 등록해야 한다는 안내와 <span class="kbd">설정 열기</span></li>
+  </ul>
+  <div class="note info">
+    <b>위치 권한이 ‘앱 사용 중에만 허용’이면</b>
+    예약은 돼요. 다만 화면이 꺼진 뒤에는 보내지 못할 수 있다는 줄이 보여요. <span class="kbd">설정 열기</span>를 눌러 위치를 ‘항상 허용’으로 바꾸면 이 줄이 사라져요.
+  </div>
+
+  <h3>[예약 취소]</h3>
+  <p>차에 타기 전에 보낸 예약은 상태 줄 아래 <span class="kbd">예약 취소</span>로 지울 수 있어요. 그 예약으로 정한 앱 목적지도 함께 지워져요. 예약 시간(12시간)이 지나면 ‘예약 시간이 지나 취소했어요’가 보여요. 이때 앱 목적지는 그대로 둬요.</p>
+</section>
+
+<section id="money">
+  <h2><span class="no">6</span>충전·통행료·기록</h2>
+  <p class="sub">충전 요금과 통행료를 주행 기록에 함께 모아 보여 드려요. 계산은 모두 이 휴대폰 안에서 해요.</p>
+
+  <h3>자주 충전하는 곳 (최대 3곳)</h3>
+  <p>설정 → 차량 연결 · 전비 → 충전 요금 아래 ‘자주 충전하는 곳’에서 정해요. 회사, 아파트 충전기처럼 자주 가는 곳을 3곳까지 넣을 수 있어요.</p>
+  <ol class="steps">
+    <li>
+      <h4>‘충전 장소 추가’를 눌러요</h4>
+      <p>오른쪽 숫자는 지금까지 정한 곳의 수예요.</p>
+    </li>
+    <li>
+      <h4>‘즐겨찾기에서 고르기’ 또는 ‘지도에서 핀으로 정하기’</h4>
+      <p>지도에서 정할 때는 지도를 움직여 핀 끝을 충전하는 자리에 맞추고, 이름을 넣은 뒤 <span class="kbd">이 위치로 정하기</span>를 눌러요. 이름과 위치는 이 휴대폰에만 저장돼요.</p>
+      <figure class="shot" style="--mw:300px"><div class="frame"><img src="android-assets/charge-pin.webp" width="300" height="161" alt="충전 장소를 지도에서 정하는 화면의 이름 칸과 이 위치로 정하기 버튼" loading="lazy" decoding="async"><span class="marks" aria-hidden="true"><span class="mk" style="--x:6.67%;--y:50.0%;--w:86.67%;--h:25.86%"><b>1</b></span></span></div><figcaption>① 이 위치로 정하기<small>지도에서 핀으로 정하기 화면 아래쪽</small></figcaption></figure>
+    </li>
+    <li>
+      <h4>단가를 넣어요 (선택)</h4>
+      <p>곳마다 원/kWh 단가를 넣을 수 있어요. 비워 두면 집 완속 단가로 계산해요. 0을 넣으면 무료로 계산해요.</p>
+    </li>
+  </ol>
+  <ul class="plain">
+    <li>정해 둔 곳에서 300m 안에 차를 세워 두고 한 충전은 완속·급속 모두 그곳 단가로 계산해요. 차가 슈퍼차저로 알려 준 충전은 슈퍼차저 단가로 계산해요.</li>
+    <li>잘못 나뉘었으면 충전 기록에서 <span class="kbd">변경</span>을 눌러 종류를 직접 바꾸거나, 금액이나 단가를 직접 넣을 수 있어요.</li>
+    <li>지우려면 그 줄의 휴지통을 누르고 지우기를 눌러요. 이곳 단가로 계산한 지난 충전은 충전기 종류별 단가로 다시 계산돼요.</li>
+  </ul>
+
+  <h3 id="charge-manual">충전 금액 직접 넣기 · 이름 붙이기</h3>
+  <p>영수증 금액이 앱 계산과 다르면 그 충전의 금액이나 1 kWh당 단가를 직접 넣을 수 있어요. 기록 → 달력 아래 충전 요금 카드를 누르면 충전 기록이 보여요.</p>
+  <ol class="steps">
+    <li><h4>충전 기록 줄의 ‘종류 선택’이나 ‘변경’을 누르고 ‘직접 입력’을 골라요</h4></li>
+    <li>
+      <h4>금액(원)이나 단가(원/kWh)를 넣고, 원하면 이름도 적어요</h4>
+      <p>넣는 동안 바로 계산한 한 줄이 보여요. ‘이름(선택)’에 ‘회사 충전기’처럼 이름을 적으면 그 충전에 이름이 붙어요. 다 되면 <span class="kbd">적용</span>을 눌러요.</p>
+      <figure class="shot" style="--mw:300px"><div class="frame"><img src="android-assets/charge-editor.webp" width="300" height="528" alt="충전 금액 직접 입력 창" loading="lazy" decoding="async"><span class="marks" aria-hidden="true"><span class="mk" style="--x:10.19%;--y:66.84%;--w:82.41%;--h:6.11%"><b>1</b></span><span class="mk" style="--x:10.19%;--y:81.21%;--w:82.41%;--h:4.58%"><b>2</b></span><span class="mk" style="--x:51.57%;--y:88.53%;--w:38.43%;--h:6.84%"><b>3</b></span></span></div><figcaption>① 금액(또는 단가) · ② 이름(선택) · ③ 적용<small>예시 기록</small></figcaption></figure>
+    </li>
+  </ol>
+  <ul class="plain">
+    <li>넣은 값은 충전 요금, 주간·월간 이동 비용, 엑셀 파일에 그대로 들어가요.</li>
+    <li>다시 자동으로 계산하려면 <span class="kbd">자동 분류로 되돌리기</span>를 누르거나 다른 종류를 고르면 돼요.</li>
+  </ul>
+
+  <h3>예상 통행료</h3>
+  <p>주행이 끝나면 주행 카드에 지나온 유료도로의 예상 통행료가 한 줄로 보여요.</p>
+  <figure class="shot" style="--mw:300px"><div class="frame"><img src="android-assets/drive-card-toll.webp" width="300" height="634" alt="주행 카드의 예상 통행료 줄" loading="lazy" decoding="async"><span class="marks" aria-hidden="true"><span class="mk" style="--x:9.26%;--y:83.99%;--w:64.81%;--h:3.29%"><b>1</b></span></span></div><figcaption>① 예상 통행료<small>예시 기록</small></figcaption></figure>
+  <ul class="plain">
+    <li>일반 승용차 요금으로 계산해요. 설·추석 연휴 면제는 저절로 반영하고, 출퇴근 할인은 반영하지 않아요.</li>
+    <li>일부 구간을 확인하지 못하면 ‘일부 구간 확인 필요’, 요금 자료가 없는 도로가 있으면 ‘일부 도로 요금 정보 없음’으로 보여요.</li>
+    <li>요금소를 나가기 전에 주행이 끝나면 ‘통행료는 다음 주행에 넣어요’가 보여요.</li>
+  </ul>
+
+  <h3>통행료 감면 설정</h3>
+  <p>설정 → 차량 연결 · 전비 → 통행료에서 내 상황에 맞게 골라요. 통행료 표시, 하이패스 사용, 전기차 감면 하이패스 단말기, 감면 대상(장애인·국가유공자 등·고엽제), 거주지·등록지를 고를 수 있어요. 감면 대상과 거주지는 이 휴대폰에만 저장하고, 기록 내보내기에는 들어가지 않아요. 통행료는 예상 금액이라 실제 청구 금액과 다를 수 있어요.</p>
+
+  <h3>기록 탭: 달력 · 주간 · 월간</h3>
+  <p>기록 탭 위에서 <span class="kbd">달력</span> <span class="kbd">주간</span> <span class="kbd">월간</span>을 골라요.</p>
+  <figure class="shot" style="--mw:340px"><div class="frame"><img src="android-assets/records-weekly.webp" width="340" height="390" alt="기록 탭 주간 화면" loading="lazy" decoding="async"></div><figcaption><small>기록 탭 → 주간 · 예시 기록</small></figcaption></figure>
+  <ul class="plain">
+    <li><b>달력</b>: 날짜를 누르면 그날 주행 카드가 보여요.</li>
+    <li><b>주간</b>: 요일 칸에 그날 달린 거리, 지난주 같은 요일과 비교, 초과 경고가 있던 주행을 보여 줘요. 아래로 안전 운전, 자주 다닌 길, 이동 비용(충전 요금과 예상 통행료), 평균 전비가 이어져요.</li>
+    <li><b>월간</b>: 달린 거리와 날마다의 막대, 초과 경고 횟수, 무결점 주행만 한 날, 최고 연속이 보여요. 사진 저장 · 공유도 돼요. 공유 이미지에는 장소 이름이 들어가지 않아요.</li>
+  </ul>
+
+  <h3 id="records-cars">기록 탭에서 차 고르기</h3>
+  <p>차를 2대 등록했다면 기록 탭 위쪽에 <b>차 이름 칩</b>이 나와요. 하나를 고르면 그 차의 달력·주간·월간만 보여요. 어느 차인지 확실하지 않은 기록은 <b>‘확인 필요’</b> 칩으로 따로 모여요. 누르면 어느 차였는지 물어요. 확인 필요 기록은 합계에 넣지 않아요.</p>
+  <p>기록 탭 위쪽 <b>‘내 차 누적 주행거리’</b> 줄에는 차 계기판의 누적 주행거리와 그 값을 읽은 날이 보여요. 차에서 읽은 값이 아직 없으면 이 줄이 보이지 않아요.</p>
+
+  <h3 id="eco-basis">전비 표시 기준</h3>
+  <p>전비 숫자 옆의 말이 그 숫자를 어떻게 구했는지 알려 줘요. 전비 줄을 누르면 근거를 볼 수 있어요. 주차(P) 중에 쓴 전력(캠핑·센트리)은 전비에 넣지 않고 ‘주차 중 소모’로 따로 보여요.</p>
+
+  <h3>기록 내보내기 (엑셀)</h3>
+  <p>기록 탭 왼쪽 위 공유 아이콘을 누르거나, 설정 → <b>기록 내보내기</b>로 열어요. <b>엑셀로 내보내기</b>를 누르면 주행 시트와 충전 시트가 든 엑셀 파일을 만들어 공유 창을 띄워요. 드라이브·메일·메신저로 보내거나 저장할 수 있어요. 좌표와 경로는 들어가지 않아요.</p>
+
+  <h3>주간 요약 알림</h3>
+  <p>매주 월요일 아침에 ‘지난주 운전 요약이 나왔어요’ 알림이 와요. 누르면 기록 탭 주간 칸이 바로 열려요. 설정 → 알림 → ‘주간 요약 알림’에서 끌 수 있어요(알림을 허용한 경우에만).</p>
+</section>
+
+<section id="new">
+  <h2><span class="no">7</span>그 밖의 기능</h2>
+  <p class="sub">따로 켜지 않아도 되는 건 설치만 하면 바로 써요.</p>
+
+  <h3 id="lockcard-design">주행 알림 모양</h3>
+  <p>감시 중 잠금화면과 알림창의 주행 알림에는 이런 것이 보여요. 값이 있는 칸만 보여요.</p>
+  <figure class="shot" style="--mw:340px"><div class="frame"><img src="android-assets/livecard.webp" width="340" height="150" alt="감시 중 주행 알림" loading="lazy" decoding="async"></div><figcaption><small>감시 중 주행 알림 · 안드로이드 버전과 휴대폰에 따라 모양이 달라요</small></figcaption></figure>
+  <ul class="plain">
+    <li>위: 한 줄 안내. 카메라가 있으면 남은 거리와 제한속도를 보여요.</li>
+    <li>아래: 지금 속도 · 제한 · 전방 카메라 · 구간단속(구간 안에서는 구간 평균) · 기어와 배터리(차량 등록을 했을 때).</li>
+    <li>카메라가 600m 안으로 가까워지면 남은 거리가 막대로 보여요. 과속 중이면 빨간색이에요.</li>
+    <li>안드로이드 16 이상에서는 상태 표시줄에도 남은 거리(없으면 지금 속도)가 작게 보일 수 있어요. 휴대폰에 따라 달라요.</li>
+    <li>‘업데이트 지연 · 앱에서 확인’이 보이면 앱을 한 번 열어 주세요.</li>
+    <li>주행이 끝나면 ‘주행 종료’ 알림이 잠깐(약 10초) 보였다가 사라져요.</li>
+  </ul>
+
+  <h3 id="theme">화면 테마 · 집중</h3>
+  <p>설정 → 알림 → ‘감시 동작’의 <b>화면 테마</b>에서 기본과 집중 중에 골라요. 집중은 차 그림 대신 속도를 가운데 크게 보여 줘요. 세로 화면과 가로 계기판이 함께 바뀌어요.</p>
+
+  <h3>가로 계기판</h3>
+  <p>감시 중에 휴대폰을 가로로 돌리면 속도, 제한속도, 카메라까지 남은 거리를 큰 화면으로 보여 드려요. 주행 탭의 ‘계기판 모드’를 눌러도 열려요. 닫기는 ✕를 누르거나 휴대폰을 다시 세로로 돌리면 돼요.</p>
+  <figure class="shot" style="--mw:340px"><div class="frame"><img src="android-assets/dashboard.webp" width="340" height="157" alt="가로 계기판" loading="lazy" decoding="async"></div><figcaption><small>가로 계기판 · 예시 화면</small></figcaption></figure>
+  <ul class="plain">
+    <li>설정 → 알림 → ‘가로로 돌리면 계기판 모드’를 끄면 저절로 바뀌지 않아요.</li>
+    <li>설정 → 알림 → <b>‘가로 계기판 고정’</b>을 켜면 감시 중에는 휴대폰을 돌리지 않아도 가로 계기판을 띄우고, 세로로 들어도 닫지 않아요. ✕를 누르거나 주행이 끝나면 닫혀요.</li>
+  </ul>
+
+  <h3>화면 꺼짐 방지</h3>
+  <p>설정 → 알림 → ‘화면 꺼짐 방지’를 켜면 앱을 열어 둔 동안 화면이 꺼지지 않아요. 주차하고 잠시 지나면 화면을 계속 켜 두지 않아요.</p>
+
+  <h3>초과 기준</h3>
+  <p>설정 → 알림 → 안내 기준 → <b>초과 기준</b>에서 과속 경고가 울리는 기준을 골라요. 0% · 5% · 10%(기본) · 15% 또는 +5km/h · +10km/h · +15km/h 중에 고를 수 있어요. km/h로 고르면 차의 속도 제한 경고와 같은 기준으로 맞출 수 있어요. 카메라 위치 안내는 그대로예요.</p>
+
+  <h3>시내 첫 안내 거리</h3>
+  <p>설정 → 알림 → <b>시내 첫 안내 거리</b>에서 550m(기본) · 300m · 200m 중에 골라요.</p>
+  <ul class="plain">
+    <li>시속 80km보다 느린 일반도로에서는 소리 안내를 늘 고른 거리까지 늦춰요. 제한속도를 넘고 있으면 그때 함께 알려요.</li>
+    <li>고속도로에서는 시속 60km보다 느릴 때만 늦춰요. 화면 카드는 먼저 뜨고, 구간단속·보호구역에서는 바로 알려요.</li>
+  </ul>
+
+  <h3>안내 음성과 음량</h3>
+  <ul class="plain">
+    <li>안내 소리는 휴대폰 음량을 따라요. 휴대폰 옆 버튼으로 음량을 올리면 안내도 커져요. 설정 → 소리 → ‘안내 음량’은 그 안에서 RoadSentry 안내만 더 크게, 작게 맞춰요.</li>
+    <li>설정 → 소리 → ‘차 블루투스 최대 음량’(기본 켬): 차 블루투스로 들을 때는 ‘안내 음량’과 관계없이 가장 크게 들려요.</li>
+    <li>음량이 너무 작거나 꺼져 있으면 ‘휴대폰 음량이 너무 작아요’ 또는 ‘차 스피커 음량이 작아요’가 떠요. 휴대폰 옆 버튼이나 운전대 스크롤 휠로 올려 주세요.</li>
+    <li>설정 → 소리 → ‘안내 시 음악 소리 줄이기’(기본 켬): 안내가 나오는 동안 음악 소리를 잠깐 줄여요.</li>
+    <li>설정 → 소리 → <b>‘주행 시작·종료 안내’</b>(음성 안내가 켜져 있을 때 보여요): 끄면 ‘주행을 시작합니다’ · ‘주행을 종료합니다’만 말하지 않아요. 카메라 안내는 그대로 나와요.</li>
+    <li>설정 → 소리에서 알림 목소리와 효과음을 <span class="kbd">미리 듣기</span>로 들어 보고 <span class="kbd">선택</span>으로 고를 수 있어요.</li>
+  </ul>
+
+  <h3>통화 중 안내</h3>
+  <ul class="plain">
+    <li>기본으로는 통화 중에 안내 소리를 내지 않아요. 스피커폰 통화도 통화로 알아채요.</li>
+    <li>설정 → 소리 → ‘통화 중에도 소리로 안내’(기본 끔)를 켜면 통화 중에도 카메라, 구간단속, 과속 안내만 소리로 알려요. 기기에 따라 작게 들리거나 들리지 않을 수 있어요.</li>
+    <li>설정 → 소리 → ‘차 스피커에서만 소리로 안내’(기본 끔): 같은 차를 함께 타는 가족이 있다면 켜 두세요. 차 블루투스로 소리가 나가지 않는 휴대폰은 소리 없이 화면으로 알려요.</li>
+  </ul>
+
+  <h3 id="air">날씨 · 미세먼지</h3>
+  <p>홈 날씨 옆에 가까운 측정소의 미세먼지·초미세먼지가 보여요(위치서비스 이용약관에 동의한 경우). 날씨를 누르면 시간별 기온과 강수확률, 미세먼지 측정소와 측정 시각을 볼 수 있어요. 날씨는 Apple 날씨, 미세먼지는 한국환경공단 에어코리아의 실시간 자료(확정 전 값)예요.</p>
+
+  <h3>주차 사진</h3>
+  <p>‘주차’ 탭에서 기둥 번호나 구역 표지판을 사진으로 찍어 둘 수 있어요(최대 4장). 사진은 이 기기 안에만 있고, 갤러리나 백업에 들어가지 않아요. 다음 주행을 시작하면 지워져요.</p>
+
+  <h3>도착하면 목적지를 정리해요</h3>
+  <p>목적지 500m 안에서 주차(P)하면 앱 목적지를 바로 지워요. 3km 안이면 30분 넘게 머문 뒤 다시 출발할 때 지워요. 그보다 멀리 세웠다면(중간 충전 등) 그대로 둬요.</p>
+
+  <h3>월간 리포트 · 에코 코칭</h3>
+  <p>매달 1일, 지난달 운전을 한 장으로 정리해 드려요. 기록 탭 달력 위 배너나 <span class="kbd">월간</span>을 누르면 열려요. 차량 등록을 하고 달린 주행에서는 평소보다 전기를 더 썼는지, 덜 썼는지 한 줄로 알려 드려요.</p>
+
+  <h3>설정 → 알림의 알림 항목</h3>
+  <ul class="plain">
+    <li>과속방지턱 알림: 켜면 과속방지턱 약 150m 앞에서 알려 드려요. 기본은 꺼져 있어요.</li>
+    <li>월간 리포트 알림: 매달 1일 아침에 알려 드려요.</li>
+    <li>주간 요약 알림: 매주 월요일 아침에 알려 드려요.</li>
+  </ul>
+
+  <h3 id="notices">공지사항</h3>
+  <p>설정 → 도움과 정보 → <b>공지사항</b>에서 업데이트 소식과 알림을 볼 수 있어요. 새 공지가 있으면 제목 옆에 점이 보여요.</p>
+
+  <h3>사용방법 소개</h3>
+  <p>설정 → 도움말 → <b>사용방법 소개</b>에서 앱 사용법을 6장으로 넘겨 볼 수 있어요. 장마다 그 설정으로 바로 가는 버튼이 있어요.</p>
+
+  <h3>새 버전 알림</h3>
+  <p>Play 스토어에 새 버전이 나오면 앱을 열 때 한 번 알려 드려요. <span class="kbd">Play 스토어에서 업데이트</span>를 누르면 돼요.</p>
+
+  <h3>앱 안에서 이 설명서 보기</h3>
+  <p>RoadSentry → 설정 → 도움말 → 맨 위 <b>사용 설명서 보기</b></p>
+</section>
+
+<section id="faq" class="faq">
+  <h2><span class="no">8</span>자주 묻는 질문</h2>
+  <p class="sub">눌러서 펼쳐 보세요.</p>
+
+  <details><summary>차에 탔는데 자동으로 안 켜져요</summary><div class="a">
+    <p>먼저 설정 → 알림 → 맨 아래 ‘차에 타면 자동 시작’ 카드를 열어 보세요.</p>
+    <ul class="checklist">
+      <li>‘확인 필요’가 보이나요? 카드 아래 한 줄대로 해 주세요.</li>
+      <li>‘준비 중’이 보이나요? 차에 탄 채로 ‘내 차 찾기’를 누르거나 앱을 연 채로 한 번 출발해 주세요.</li>
+      <li>‘설정 전’이 보이나요? 차량 등록 전이면 등록을 먼저 하고(<a href="#tesla">4. 차량 등록</a>), 등록했다면 두 스위치와 약관 동의를 확인해 주세요.</li>
+      <li>설정 → 차량 연결 · 전비에서 ‘차에 타면 자동 연결’과 ‘기어로 시작·종료’가 둘 다 켜져 있나요?</li>
+      <li>위치 권한이 ‘항상 허용’이고 ‘정확한 위치 사용’이 켜져 있나요?</li>
+      <li>배터리 사용이 ‘제한 없음’인가요? 삼성 휴대폰이면 ‘절대 잠자기 안 함 앱’에 들어 있나요?</li>
+      <li>최근에 앱을 ‘강제 중지’했나요? 앱을 한 번 열면 다시 켜져요.</li>
+    </ul>
+    <p>그래도 안 켜지면 <a href="#contact">진단 기록을 보내 주세요</a>.</p>
+  </div></details>
+
+  <details><summary>저절로 시작됐는데 앱 화면이 안 열려요</summary><div class="a">
+    <p>정상이에요. 저절로 시작돼도 앱 화면은 열리지 않아요. 잠금화면과 알림창에 주행 알림이 보이고, 앱을 열면 ‘감시 종료’ 버튼이 보여요. 차량 등록을 했다면 D를 넣을 때 “주행을 시작합니다”라고 알려요.</p>
+  </div></details>
+
+  <details><summary>‘자동으로 시작하지 못했어요’ 알림이 와요</summary><div class="a">
+    <p>휴대폰이 앱을 막아 저절로 시작하지 못한 거예요. 알림을 누르면 바로 감시가 시작돼요. 그다음 휴대폰 설정 → 애플리케이션 → RoadSentry에서 <b>배터리 ‘제한 없음’</b>, <b>위치 ‘항상 허용’</b>을 확인해 주세요. 삼성 휴대폰은 ‘절대 잠자기 안 함 앱’에도 넣어 주세요.</p>
+  </div></details>
+
+  <details><summary>저절로 시작을 끄고 싶어요</summary><div class="a">
+    <p>설정 → 차량 연결 · 전비에서 ‘차에 타면 자동 연결’이나 ‘기어로 시작·종료’ 중 하나를 끄거나, 위치 권한을 ‘항상 허용’이 아닌 것으로 바꾸면 저절로 시작이 멈춰요. ‘차에 타면 자동 연결’을 끄면 ‘차로 보내기’ 예약도 함께 꺼져요.</p>
+  </div></details>
+
+  <details><summary>주행 알림이 안 떠요 / 알림을 없애고 싶어요</summary><div class="a">
+    <ul>
+      <li>휴대폰 설정 → 애플리케이션 → RoadSentry → 알림이 켜져 있는지 봐 주세요. 꺼져 있어도 감시와 안내 음성은 그대로예요.</li>
+      <li>잠금화면에서만 안 보이면 휴대폰 설정의 잠금화면 알림 설정을 확인해 주세요.</li>
+      <li>알림을 옆으로 밀어 없애면 그 주행에서는 다시 뜨지 않아요. 다음 주행에서 다시 떠요.</li>
+    </ul>
+  </div></details>
+
+  <details><summary>주행하지 않을 때도 배터리를 쓰는 것 같아요</summary><div class="a">
+    <p>차량 등록을 하셨다면, 주차한 뒤 잠시 동안 다시 출발하는지 기다려요. 이때 알림창에 조용한 ‘출발 대기’ 알림이 보여요. 출발하지 않으면 스스로 멈춰요.</p>
+    <p>차 안에서 쉬는 동안에는 ‘차에서 출발을 기다리고 있어요’ 알림이 보일 수 있어요. D를 넣으면 바로 시작하려고 기다리는 거예요. 차에서 내리면 멈춰요. 원하지 않으면 설정 → 차량 연결 · 전비의 ‘차에 타면 자동 연결’을 끄면 돼요.</p>
+    <p>차량 등록을 하지 않으셨다면 앱을 열면 바로 감시를 시작하고, 출발하지 않거나 주행 뒤 차를 세워 두면 스스로 멈춰요.</p>
+  </div></details>
+
+  <details><summary>목적지를 보냈는데 차에서 안내가 시작되지 않아요</summary><div class="a">
+    <p>보낸 목적지는 차 화면에 뜨고, 차 화면에서 목적지를 한 번 눌러야 안내가 시작돼요.</p>
+    <ul>
+      <li>차에 타기 전에 보냈다면 D를 넣는 순간 보내요. 12시간이 지나면 예약이 취소돼요.</li>
+      <li>차량 등록과 약관 동의가 필요하고, ‘차에 타면 자동 연결’과 ‘기어로 시작·종료’를 켜 두어야 해요. 위치 권한은 ‘항상 허용’으로 해 주세요. 하나라도 빠지면 앱이 까닭을 알려 드려요(<a href="#send-blocked">보낼 수 없을 때</a>).</li>
+      <li>보내지 못했다면 <span class="kbd">테슬라 앱으로 보내기</span>를 눌러 공유 창에서 Tesla를 골라요.</li>
+    </ul>
+  </div></details>
+
+  <details><summary>지하 주차장에서 나갈 때 늦게 켜져요</summary><div class="a">
+    <p>차량 등록을 했다면 지하에서도 기어를 D로 넣으면 바로 켜져요(‘차에 타면 자동 연결’과 ‘기어로 시작·종료’를 켠 경우). 차량 등록을 안 했다면 지하에서는 GPS가 잡히지 않아, 밖으로 나와 GPS가 잡힌 뒤에 켜질 수 있어요.</p>
+  </div></details>
+
+  <details><summary>차 키와 같이 써도 안전한가요?</summary><div class="a">
+    <ul>
+      <li>RoadSentry에는 문을 열거나 잠그는 기능이 없어요.</li>
+      <li>목적지를 차로 보내는 것은 D를 넣은 뒤에만 해요. 주차 중에 [차로 보내기]를 누르면 앱이 기억만 해 두고, 그때는 차에 아무것도 보내지 않아요.</li>
+      <li>차 키 목록에 RoadSentry 키가 하나 보여요. 휴대폰을 바꿀 때는 차 화면 ‘잠금’ 메뉴의 키 목록에서 지워 주세요.</li>
+    </ul>
+  </div></details>
+
+  <details><summary>새 휴대폰으로 바꿨어요</summary><div class="a">
+    <ul>
+      <li>차량 등록을 했다면 차 화면 키 목록에서 예전 RoadSentry 키를 지우고, 새 휴대폰에서 차량을 다시 등록해요. 그다음 차에 탄 채로 ‘내 차 찾기’를 누르거나 앱을 연 채로 한 번 출발해 주세요.</li>
+      <li>새 휴대폰에서도 위치 ‘항상 허용’, 배터리 ‘제한 없음’을 다시 해 주세요.</li>
+    </ul>
+  </div></details>
+
+  <details><summary>안내가 실제와 달라요 / 카메라를 놓쳤어요</summary><div class="a">
+    <p>위치·통신·제공 정보에 따라 안내가 늦거나 빠질 수 있어요. 실제 도로 표지와 제한속도를 먼저 봐 주세요. 차를 세운 뒤 <a href="#contact">진단 기록</a>을 보내 주시면 원인을 찾는 데 큰 도움이 돼요.</p>
+  </div></details>
+</section>
+
+<section id="contact">
+  <h2><span class="no">9</span>문의하기</h2>
+  <p class="sub">문제가 생기면 진단 기록을 먼저 보내고, 받은 접수번호를 함께 알려 주세요.</p>
+  <ol class="steps">
+    <li><h4>설정 → 도움말 → 진단 로그</h4></li>
+    <li>
+      <h4>‘진단 기록 보내기’를 눌러요</h4>
+      <p>정확한 위치(좌표·진행 방향)는 지운 뒤 보내요. 목적지 이름도 빠져요.</p>
+    </li>
+    <li>
+      <h4>접수번호와 상황을 알려 주세요</h4>
+      <p>언제, 어디쯤(대략), 무엇이 이상했는지 적어 주시면 돼요. 앱의 설정 → 도움말 → 문의하기에서도 메일을 보낼 수 있어요.</p>
+    </li>
+  </ol>
+  <div class="contact">
+    <a class="btn" href="mailto:help@roadsentryapp.com?subject=RoadSentry%20%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C%20%EB%AC%B8%EC%9D%98">이메일 보내기 · help@roadsentryapp.com</a>
+    <a class="btn ghost" href="https://jhlee33214.github.io/roadsentry-data/support.html">지원 페이지</a>
+  </div>
+</section>
+</main>
+
+<footer class="rs-foot">
+  <div class="rs-wrap">
+    <div class="rs-row">
+      <div>
+        <div class="rs-brand"><img src="home/icon-96.png" alt="" width="30" height="30">RoadSentry</div>
+        <p class="rs-note">알림은 참고용이에요. 실제 도로 표지와 제한속도를 먼저 확인해 주세요. 예상 통행료는 참고용이며 실제 요금과 다를 수 있어요.<br>Tesla는 Tesla, Inc.의 상표이며, 로드센트리는 Tesla와 제휴한 공식 앱이 아니에요. Android·Google Play는 Google LLC의 상표예요.</p>
+        <a class="sns" href="https://www.instagram.com/roadsentry/" target="_blank" rel="noopener" aria-label="로드센트리 인스타그램 (새 창)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".9" fill="currentColor" stroke="none"/></svg><span>@roadsentry</span></a><a class="sns" href="https://www.youtube.com/@RoadSentry" target="_blank" rel="noopener" aria-label="로드센트리 유튜브 (새 창)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="M10.2 9.4v5.2l4.6-2.6z" fill="currentColor" stroke="none"/></svg><span>RoadSentry</span></a>
+      </div>
+      <div class="rs-cols">
+        <div><h4>도움</h4><ul><li><a href="./">홈</a></li><li><a href="#faq">자주 묻는 질문</a></li><li><a href="https://jhlee33214.github.io/roadsentry-data/support.html">지원</a></li><li><a href="mailto:help@roadsentryapp.com">이메일 문의</a></li><li><a href="https://www.instagram.com/roadsentry/" target="_blank" rel="noopener">인스타그램</a></li><li><a href="https://www.youtube.com/@RoadSentry" target="_blank" rel="noopener">유튜브</a></li></ul></div>
+        <div><h4>약관</h4><ul><li><a href="https://jhlee33214.github.io/roadsentry-data/privacy.html">개인정보 처리방침</a></li><li><a href="https://jhlee33214.github.io/roadsentry-data/terms.html">위치서비스 이용약관</a></li></ul></div>
+      </div>
+    </div>
+    <p class="rs-copy">© 2026 RoadSentry</p>
+  </div>
+</footer>
+<a class="top" href="#top" aria-label="맨 위로">↑</a>
+
+<script>
+/* 지금 보고 있는 절을 목차에 표시 (없어도 페이지는 그대로 동작) */
+(function(){
+  if(!('IntersectionObserver' in window)) return;
+  var links=[].slice.call(document.querySelectorAll('.toc a'));
+  var map={}; links.forEach(function(a){map[a.getAttribute('href').slice(1)]=a;});
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting) return;
+      links.forEach(function(a){a.removeAttribute('aria-current');});
+      var a=map[e.target.id]; if(!a) return;
+      a.setAttribute('aria-current','true');
+      try{var ol=a.closest('ol');if(ol){var x=a.offsetLeft-(ol.clientWidth-a.offsetWidth)/2;ol.scrollTo({left:Math.max(0,x),behavior:'smooth'});}}catch(_){}
+    });
+  },{rootMargin:'-45% 0px -50% 0px'});
+  Object.keys(map).forEach(function(id){var s=document.getElementById(id); if(s) io.observe(s);});
+})();
+</script>
+</body>
+</html>
